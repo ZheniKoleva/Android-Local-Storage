@@ -6,6 +6,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.example.android_local_storage.databinding.FragmentCountriesListBinding
+import com.google.android.material.snackbar.Snackbar
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
 class CountriesListFragment : Fragment() {
     private lateinit var binding: FragmentCountriesListBinding
@@ -23,7 +27,7 @@ class CountriesListFragment : Fragment() {
 
         val countryService = retrofit.create(CountryService::class.java)
         val countryRepository = CountryRepository(countryService)  */
-        /* val countryRepository = CountryRepository()
+        val countryRepository = CountryRepository()
 
         countryRepository.getCountries()?.enqueue(object : Callback<List<Country>> {
             override fun onResponse(
@@ -38,7 +42,7 @@ class CountriesListFragment : Fragment() {
                 Snackbar.make(binding.root, "Failure to load countries", Snackbar.LENGTH_LONG)
                     .show()
             }
-        }) */
+        })
 
         return binding.root
     }

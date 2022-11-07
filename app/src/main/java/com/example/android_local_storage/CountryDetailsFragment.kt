@@ -32,7 +32,7 @@ class CountryDetailsFragment : Fragment() {
 
         val countryService = retrofit.create(CountryService::class.java)
         val countryRepository = CountryRepository(countryService)  */
-       /* val countryRepository = CountryRepository()
+       val countryRepository = CountryRepository()
 
         countryRepository.getCountryDetails(args.countryName)
             ?.enqueue(object : Callback<List<NetworkCountryDetails>> {
@@ -59,7 +59,7 @@ class CountryDetailsFragment : Fragment() {
 
         binding.btnBack.setOnClickListener {
             findNavController().navigateUp()
-        } */
+        }
 
         return binding.root
     }
