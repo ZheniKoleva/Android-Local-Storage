@@ -23,7 +23,7 @@ class CountriesListFragment : Fragment() {
 
         val countryService = retrofit.create(CountryService::class.java)
         val countryRepository = CountryRepository(countryService)  */
-        /*val countryRepository = CountryRepository()
+        /* val countryRepository = CountryRepository()
 
         countryRepository.getCountries()?.enqueue(object : Callback<List<Country>> {
             override fun onResponse(
