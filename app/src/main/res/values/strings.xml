@@ -1,3 +1,12 @@
 <resources>
     <string name="app_name">Android-Local-Storage</string>
+    <string name="countries_list_title">List of Countries</string>
+    <!-- Country Details -->
+    <string name="country_details_title">Country details:</string>
+    <string name="country_name_formatted">Country name: %1$s</string>
+    <string name="country_capital_formatted">Country capital: %1$s</string>
+    <string name="country_region_formatted">Country region: %1$s</string>
+    <string name="country_population_formatted">Population: %1$d</string>
+    <string name="country_area_formatted">Area: %1$.2f</string>
+    <string name="btn_back">Back</string>
 </resources>
