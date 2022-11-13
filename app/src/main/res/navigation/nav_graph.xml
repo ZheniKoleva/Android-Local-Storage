@@ -20,7 +20,7 @@
         app:popUpTo="@id/countriesListFragment">
 
         <argument
-            android:name="countryName"
+            android:name="countryId"
             app:argType="string"/>
 
         <action

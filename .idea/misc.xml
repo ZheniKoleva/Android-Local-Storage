@@ -3,11 +3,14 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/SoftUni/Android/Android-Local-Storage/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.1" />
+        <entry key="..\:/SoftUni/Android/Android-Local-Storage/app/src/main/res/drawable/animation_loader.xml" value="0.1" />
+        <entry key="..\:/SoftUni/Android/Android-Local-Storage/app/src/main/res/drawable/ic_launcher_background.xml" value="0.1" />
         <entry key="..\:/SoftUni/Android/Android-Local-Storage/app/src/main/res/drawable/image_border.xml" value="0.165" />
         <entry key="..\:/SoftUni/Android/Android-Local-Storage/app/src/main/res/layout/activity_main.xml" value="0.21875" />
         <entry key="..\:/SoftUni/Android/Android-Local-Storage/app/src/main/res/layout/country_list_item.xml" value="0.21822916666666667" />
         <entry key="..\:/SoftUni/Android/Android-Local-Storage/app/src/main/res/layout/fragment_countries_list.xml" value="0.1" />
-        <entry key="..\:/SoftUni/Android/Android-Local-Storage/app/src/main/res/layout/fragment_country_details.xml" value="0.20520833333333333" />
+        <entry key="..\:/SoftUni/Android/Android-Local-Storage/app/src/main/res/layout/fragment_country_details.xml" value="0.1" />
       </map>
     </option>
   </component>

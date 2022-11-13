@@ -5,18 +5,19 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.bumptech.glide.Glide
+import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.example.android_local_storage.databinding.FragmentCountryDetailsBinding
-import com.google.android.material.snackbar.Snackbar
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
+import kotlinx.coroutines.launch
 
 class CountryDetailsFragment : Fragment() {
     private lateinit var binding: FragmentCountryDetailsBinding
     private lateinit var args: CountryDetailsFragmentArgs
+    private lateinit var mainActivity: MainActivity
+    private lateinit var countryDao: CountryDao
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -24,38 +25,27 @@ class CountryDetailsFragment : Fragment() {
     ): View {
         binding = FragmentCountryDetailsBinding.inflate(inflater, container, false)
         args = navArgs<CountryDetailsFragmentArgs>().value
+        mainActivity = (activity as MainActivity)
+        countryDao = mainActivity.db.countryDao()
 
-        /*val retrofit = Retrofit.Builder()
-            .baseUrl("https://restcountries.com/v2/")
-            .addConverterFactory(GsonConverterFactory.create())
-            .build()
+        lifecycleScope.launch {
+            mainActivity.loadingSpinner.visibility = View.VISIBLE
 
-        val countryService = retrofit.create(CountryService::class.java)
-        val countryRepository = CountryRepository(countryService)  */
-       val countryRepository = CountryRepository()
+            val searchedCountry = countryDao.getCountryById(args.countryId)
 
-        countryRepository.getCountryDetails(args.countryName)
-            ?.enqueue(object : Callback<List<NetworkCountryDetails>> {
-                override fun onResponse(
-                    call: Call<List<NetworkCountryDetails>>, response: Response<List<NetworkCountryDetails>>
-                ) {
-                    val country = response.body()?.get(0) ?: return
-                    val viewCountry = context?.let { country.asCountryDetails(it) }
-                    binding.apply {
-                        this.country = viewCountry
+            binding.apply {
+                this.country = searchedCountry.asCountryDetails(binding.root.context)
 
-                        Glide.with(root.context)
-                            .load(country.flags.png)
-                            .placeholder(R.drawable.ic_launcher_foreground)
-                            .into(ivFlag)
-                    }
-                }
+                Glide.with(root.context)
+                    .load(country?.flag)
+                    .placeholder(R.drawable.animation_loader)
+                    .error(R.drawable.ic_twotone_cloud_off_24)
+                    .diskCacheStrategy(DiskCacheStrategy.RESOURCE)
+                    .into(ivFlag)
+            }
 
-                override fun onFailure(call: Call<List<NetworkCountryDetails>>, t: Throwable) {
-                    Snackbar.make(binding.root, "Failure to load countries", Snackbar.LENGTH_LONG)
-                        .show()
-                }
-            })
+            mainActivity.loadingSpinner.visibility = View.GONE
+        }
 
         binding.btnBack.setOnClickListener {
             findNavController().navigateUp()

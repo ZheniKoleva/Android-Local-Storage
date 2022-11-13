@@ -1,6 +1,8 @@
 <resources>
     <string name="app_name">Android-Local-Storage</string>
     <string name="countries_list_title">List of Countries</string>
+    <string name="countries_list_update">Last updated on: %1$s</string>
+    <string name="countries_list_size">Number of countries: %1$d</string>
     <!-- Country Details -->
     <string name="country_details_title">Country details:</string>
     <string name="country_name_formatted">Country name: %1$s</string>
